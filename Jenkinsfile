@@ -1,12 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('execute') {
-      steps {
-        sh '''
-java -jar  ${WORKSPACE}/target/ReapMyTube-0.0.1-SNAPSHOT.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos'''
-      }
-    }
 
     stage('shutdown the server') {
       steps {
@@ -27,5 +21,11 @@ fi'''
       }
     }
 
+    stage('execute') {
+      steps {
+        sh '''
+java -jar  ${WORKSPACE}/target/ReapMyTube-0.0.1-SNAPSHOT.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos'''
+      }
+    }
   }
 }
