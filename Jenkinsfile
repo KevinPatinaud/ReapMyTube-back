@@ -1,12 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      steps {
-        sh 'mvn clean package'
-      }
-    }
-
     stage('execute') {
       steps {
         sh '''
@@ -24,6 +18,12 @@ if [[ -n "$process" ]]
 then
     kill -9 $process
 fi'''
+      }
+    }
+
+    stage('build') {
+      steps {
+        sh 'mvn clean package'
       }
     }
 
