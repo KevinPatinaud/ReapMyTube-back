@@ -12,8 +12,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-            .allowedOrigins("http://http://reapmytube.fr/")
-            .allowedMethods("PUT", "DELETE")
-            .allowCredentials(false).maxAge(3600);
+        .allowedMethods("GET", "POST");
     }
 }
