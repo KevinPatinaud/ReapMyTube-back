@@ -16,7 +16,6 @@ public class YoutbeAPIController {
 	@Autowired
 	Environment env;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/youtube/search")
 	public String youtubeSearch(@RequestParam(required = true) String query) {
 
