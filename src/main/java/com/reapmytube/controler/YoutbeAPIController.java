@@ -28,5 +28,12 @@ public class YoutbeAPIController {
 
 		return result;
 	}
+	
+
+	@GetMapping("/")
+	public String defaultController() {
+
+	    return "Coucou";
+	}
 
 }
