@@ -27,5 +27,11 @@ java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr6
       }
     }
 
+    stage('code coverage') {
+      steps {
+        sh 'mvn clean cobertura:cobertura'
+      }
+    }
+
   }
 }
