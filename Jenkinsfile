@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+        stage('code coverage') {
+      steps {
+        sh 'mvn clean cobertura:cobertura'
+      }
+    }
+    
     stage('build') {
       steps {
         sh 'mvn clean package'
@@ -27,11 +33,7 @@ java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr6
       }
     }
 
-    stage('code coverage') {
-      steps {
-        sh 'mvn clean cobertura:cobertura'
-      }
-    }
+
 
   }
 }
