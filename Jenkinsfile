@@ -29,7 +29,7 @@ fi'''
     stage('server start') {
       steps {
         sh '''
-java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos  & echo $! > ./pid.file &'''
+java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos  & echo $! > ${WORKSPACE}/target/pid.file &'''
       }
     }
 
