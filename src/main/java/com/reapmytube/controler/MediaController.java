@@ -31,14 +31,7 @@ public class MediaController {
 
 				// execute the download async function
 				try {
-<<<<<<< HEAD
 					Runtime.getRuntime().exec("youtube-dl " + message.getUrlToDownload() + " -o " + tmpDirURI + "/%(title)s.%(ext)s");
-=======
-					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					// ESSAYER YOUTUBE-DL &
-					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					Runtime.getRuntime().exec("youtube-dl " + message.getUrlToDownload() + " -o " + tmpDirURI + "/%(title)s.%(ext)s &");
->>>>>>> 46762df9c1a27e587b84d678f0d690c7c652fe4b
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
