@@ -16,13 +16,7 @@ pipeline {
     stage('server stop') {
       steps {
         sh '''
-
-process=`netstat -plten |grep java | grep 8082 | tr -s \' \' | cut -d" " -f 9 | cut -d"/" -f 1`
-
-if [[ -n "$process" ]]
-then
-    kill -9 $process
-fi'''
+kill $(cat ${WORKSPACE}/target/pid.file)'''
       }
     }
 
