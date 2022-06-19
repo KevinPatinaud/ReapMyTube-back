@@ -18,7 +18,7 @@ pipeline {
         sh 'mv ${WORKSPACE}/target/ReapMyTube.jar /var/SpringServer/ReapMyTube.jar'
         sh '/var/SpringServer/stop.sh'
         sleep 5
-        sh '/var/SpringServer/start.sh'
+        sh '/var/SpringServer/start.sh &'
       }
     }
 
