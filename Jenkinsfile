@@ -28,7 +28,7 @@ rm "$FILE"
 fi
 '''
         sleep 5
-        sh 'java -jar  /var/SpringServer/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos >  /var/SpringServer/log.log  & echo $! > /var/SpringServer/pid.file &'
+        sh 'java -jar  /var/SpringServer/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos'
       }
     }
 
