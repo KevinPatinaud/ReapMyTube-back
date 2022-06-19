@@ -1,39 +1,26 @@
 pipeline {
   agent any
   stages {
-        stage('code coverage') {
+    stage('code coverage') {
       steps {
         sh 'mvn clean cobertura:cobertura'
       }
     }
-    
+
     stage('build') {
       steps {
         sh 'mvn clean package'
       }
     }
 
-    stage('server stop') {
+    stage('deployement') {
       steps {
-        sh '''
-
-process=`netstat -plten |grep java | grep 8082 | tr -s \' \' | cut -d" " -f 9 | cut -d"/" -f 1`
-
-if [[ -n "$process" ]]
-then
-    kill -9 $process
-fi'''
+        sh 'mv ${WORKSPACE}/target/ReapMyTube.jar /var/SpringServer/ReapMyTube.jar'
+        sh '/var/SpringServer/stop.sh'
+        sleep 5
+        sh '/var/SpringServer/start.sh'
       }
     }
-
-    stage('server start') {
-      steps {
-        sh '''
-java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos'''
-      }
-    }
-
-
 
   }
 }
