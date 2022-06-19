@@ -16,9 +16,19 @@ pipeline {
     stage('deployement') {
       steps {
         sh 'mv ${WORKSPACE}/target/ReapMyTube.jar /var/SpringServer/ReapMyTube.jar'
-        sh '/var/SpringServer/stop.sh'
+        sh '''
+FILE="/var/SpringServer/pid.file"
+if [ -f "$FILE" ]; then
+PID=$(cat "$FILE")
+if ps -p $PID > /dev/null
+then
+kill $PID 
+fi
+rm "$FILE"
+fi
+'''
         sleep 5
-        sh '/var/SpringServer/start.sh'
+        sh 'java -jar  /var/SpringServer/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos >  /var/SpringServer/log.log  & echo $! > /var/SpringServer/pid.file &'
       }
     }
 
