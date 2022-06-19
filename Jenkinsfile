@@ -13,17 +13,12 @@ pipeline {
       }
     }
 
-    stage('server stop') {
+    stage('deployement') {
       steps {
+        sh 'mv ${WORKSPACE}/target/ReapMyTube.jar /var/SpringServer/ReapMyTube.jar'
+        sh 'java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos  & echo $! > ./pid.file &'
         sh '''
-kill $(cat ${WORKSPACE}/target/pid.file)'''
-      }
-    }
-
-    stage('server start') {
-      steps {
-        sh '''
-java -jar  ${WORKSPACE}/target/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos  & echo $! > ${WORKSPACE}/target/pid.file &'''
+echo "kill $(cat ${WORKSPACE}/target/pid.file)"'''
       }
     }
 
