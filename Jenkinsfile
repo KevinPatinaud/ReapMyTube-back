@@ -25,6 +25,7 @@ kill $PID
 fi
 rm "$FILE"
 fi'''
+        sleep 10
         sh 'java -jar  /var/SpringServer/ReapMyTube.jar --youtube.key=AIzaSyBW3vUm0FYk0pr65dxkc1U1FD37CCF0Kos  & echo $! > /var/SpringServer/pid.file &'
       }
     }
